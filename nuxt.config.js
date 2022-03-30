@@ -96,6 +96,8 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
+  generate: { fallback: '404.html' },
+
   // dotenv
   env: {
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
