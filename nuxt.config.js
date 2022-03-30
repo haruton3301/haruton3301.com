@@ -1,5 +1,10 @@
 import colors from 'vuetify/es5/util/colors'
 
+const baseUrl = 'https://haruton3301.com'
+
+const siteTitle = 'はるとんのブログ'
+const siteDescription = '忘れないように技術メモを残します'
+
 export default {
   srcDir: 'src',
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -10,15 +15,40 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - haruton3301.com',
-    title: 'haruton3301.com',
+    titleTemplate(title) {
+      return (title ? `${title} | ` : '') + 'はるとんのブログ'
+    },
+    // title: 'はるとんのブログ',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'ja',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: siteDescription,
+      },
+      { hid: 'og:site_name', property: 'og:site_name', content: siteTitle },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: baseUrl,
+      },
+      { hid: 'og:title', property: 'og:title', content: siteTitle },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: siteDescription,
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: `${baseUrl}/ogp.png`,
+      },
+      { name: 'twitter:card', content: 'summary' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
@@ -42,7 +72,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ['@nuxtjs/dotenv'],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
@@ -65,4 +95,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  // dotenv
+  env: {
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
+    CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,
+  },
 }

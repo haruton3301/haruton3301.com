@@ -26,7 +26,13 @@
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-text="title" />
+      <v-spacer />
+      <img
+        class="header-logo"
+        src="~/assets/header_logo.png"
+        unselectable="on"
+        onSelectStart="return false;"
+      />
       <v-spacer />
     </v-app-bar>
     <v-main>
@@ -35,7 +41,9 @@
       </v-container>
     </v-main>
     <v-footer :absolute="!fixed" app>
-      <span>&copy; 2022 はるとんのお部屋</span>
+      <v-spacer />
+      <span>&copy; 2022 {{ title }}</span>
+      <v-spacer />
     </v-footer>
   </v-app>
 </template>
@@ -50,21 +58,43 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
+          icon: 'mdi-home',
+          title: 'Home',
           to: '/',
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
+          icon: 'mdi-email',
+          title: 'Contact',
+          to: '/contact',
         },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'はるとんのお部屋',
+      title: 'はるとんのブログ',
     }
   },
 }
 </script>
+
+<style scoped>
+header {
+  border-top: 4px solid;
+  border-image: linear-gradient(
+      to right,
+      rgb(64, 224, 208),
+      rgb(255, 140, 0) 40%,
+      rgb(255, 0, 128)
+    )
+    1 / 1 / 0 stretch;
+}
+
+.header-logo {
+  height: 68%;
+  pointer-events: none;
+  user-select: none; /* CSS3 */
+  -moz-user-select: none; /* Firefox */
+  -webkit-user-select: none; /* Safari、Chromeなど */
+  -ms-user-select: none; /* IE10かららしい */
+}
+</style>
