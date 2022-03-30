@@ -87,7 +87,7 @@ header {
   height: 100%;
   padding: 0 32px;
   border-radius: 8px;
-  color: gray;
+  color: gray !important;
 }
 .header-logo img {
   height: 36px;

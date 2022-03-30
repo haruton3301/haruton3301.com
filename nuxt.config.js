@@ -6,6 +6,8 @@ const siteTitle = 'はるとんのブログ'
 const siteDescription = '忘れないように技術メモを残します'
 
 export default {
+  loading: false,
+
   srcDir: 'src',
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
