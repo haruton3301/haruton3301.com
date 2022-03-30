@@ -21,8 +21,10 @@
     <v-app-bar fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-spacer />
-      <nuxt-link to="/" class="header-logo">
-        <img src="~/assets/header_logo.png" />
+      <nuxt-link v-ripple to="/" class="header-logo">
+        <v-row class="ma-0" justify="center" style="height: 100%">
+          <img src="~/assets/header_logo.png" />
+        </v-row>
       </nuxt-link>
       <v-spacer />
     </v-app-bar>
@@ -64,7 +66,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 header {
   border-top: 4px solid;
   border-image: linear-gradient(
@@ -76,12 +78,20 @@ header {
     1 / 1 / 0 stretch;
 }
 
+.v-toolbar__content {
+  padding: 0 16px 4px;
+}
+
 .header-logo {
   display: block;
-  height: 36px;
+  height: 100%;
+  padding: 0 32px;
+  border-radius: 8px;
+  color: gray;
 }
 .header-logo img {
   height: 36px;
+  margin: auto 0;
   pointer-events: none;
   user-select: none; /* CSS3 */
   -moz-user-select: none; /* Firefox */
