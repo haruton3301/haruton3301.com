@@ -1,12 +1,6 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
+    <v-navigation-drawer v-model="drawer" :clipped="clipped" fixed app>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -24,15 +18,12 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
+    <v-app-bar fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-spacer />
-      <img
-        class="header-logo"
-        src="~/assets/header_logo.png"
-        unselectable="on"
-        onSelectStart="return false;"
-      />
+      <nuxt-link to="/" class="header-logo">
+        <img src="~/assets/header_logo.png" />
+      </nuxt-link>
       <v-spacer />
     </v-app-bar>
     <v-main>
@@ -40,7 +31,7 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <v-footer :absolute="!fixed" app>
+    <v-footer app>
       <v-spacer />
       <span>&copy; 2022 {{ title }}</span>
       <v-spacer />
@@ -55,7 +46,6 @@ export default {
     return {
       clipped: false,
       drawer: false,
-      fixed: false,
       items: [
         {
           icon: 'mdi-home',
@@ -68,9 +58,6 @@ export default {
           to: '/contact',
         },
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
       title: 'はるとんのブログ',
     }
   },
@@ -84,17 +71,20 @@ header {
       to right,
       rgb(64, 224, 208),
       rgb(255, 140, 0) 40%,
-      rgb(255, 0, 128)
+      rgb(237, 227, 232)
     )
     1 / 1 / 0 stretch;
 }
 
 .header-logo {
-  height: 68%;
+  display: block;
+  height: 36px;
+}
+.header-logo img {
+  height: 36px;
   pointer-events: none;
   user-select: none; /* CSS3 */
   -moz-user-select: none; /* Firefox */
   -webkit-user-select: none; /* Safari、Chromeなど */
-  -ms-user-select: none; /* IE10かららしい */
 }
 </style>

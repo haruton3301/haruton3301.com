@@ -7,14 +7,19 @@ import contentfulClient from '@/plugins/contentful'
 
 export default {
   components: {
-    Article: () => import('@/components/Article.vue')
+    Article: () => import('@/components/Article.vue'),
   },
   asyncData({ params }) {
     return contentfulClient
-      .getEntry(params.id)
-      .then((entry) => {
+      .getEntries({
+        content_type: 'article',
+        'fields.slug': params.slug,
+        limit: 1,
+      })
+      .then((entries) => {
+        console.log(entries)
         return {
-          post: entry
+          post: entries.items[0],
         }
       })
       .catch(console.error)
@@ -22,8 +27,8 @@ export default {
   head() {
     return {
       // nuxt.config.jsの%sに反映される内容
-      title: this.post.fields.title
+      title: this.post.fields.title,
     }
-  }
+  },
 }
 </script>
