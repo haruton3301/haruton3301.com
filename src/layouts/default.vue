@@ -90,7 +90,7 @@ header {
   color: gray !important;
 }
 .header-logo img {
-  height: 36px;
+  height: 34px;
   margin: auto 0;
   pointer-events: none;
   user-select: none; /* CSS3 */
