@@ -1,35 +1,39 @@
 <template>
-  <article class="my-8 mx-1 pa-9 white-bg article-single">
-    <section class="date">
-      <span class="mr-3">
-        投稿日
-        <time :datetime="createdAtDateTime" itemprop="datepublished">
-          {{ createdAt }}
-        </time>
-      </span>
-      <span>
-        更新日
-        <time :datetime="updatedAtDateTime" itemprop="modified">
-          {{ updatedAt }}
-        </time>
-      </span>
-    </section>
-    <section>
-      <h1>{{ title }}</h1>
-    </section>
-    <section class="tags mt-2 mb-8">
-      <v-icon class="mr-1">mdi-tag</v-icon>
-      <nuxt-link
-        v-for="tag in tags"
-        :key="tag.name"
-        :to="tag.to"
-        class="mr-1"
-        >{{ tag.name }}</nuxt-link
-      >
-    </section>
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <section v-html="content"></section>
-  </article>
+  <v-row>
+    <v-col cols="12" class="px-0 px-sm-7 px-md-7 px-lg-7 px-xl-7 py-0">
+      <article class="my-8 px-7 py-7 white-bg article-single">
+        <section class="date">
+          <span class="mr-3">
+            投稿日
+            <time :datetime="createdAtDateTime" itemprop="datepublished">
+              {{ createdAt }}
+            </time>
+          </span>
+          <span>
+            更新日
+            <time :datetime="updatedAtDateTime" itemprop="modified">
+              {{ updatedAt }}
+            </time>
+          </span>
+        </section>
+        <section>
+          <h1>{{ title }}</h1>
+        </section>
+        <section class="tags mt-2 mb-8">
+          <v-icon class="mr-1">mdi-tag</v-icon>
+          <nuxt-link
+            v-for="tag in tags"
+            :key="tag.name"
+            :to="tag.to"
+            class="mr-1"
+            >{{ tag.name }}</nuxt-link
+          >
+        </section>
+        <!-- eslint-disable-next-line vue/no-v-html -->
+        <section v-html="content"></section>
+      </article>
+    </v-col>
+  </v-row>
 </template>
 
 <script>

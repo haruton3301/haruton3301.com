@@ -1,5 +1,5 @@
 <template>
-  <v-card class="ma-3 px-6 py-4 article-card" rounded="0" elevation="0">
+  <v-card class="mb-5 px-6 py-4 article-card" rounded="0" elevation="0">
     <nuxt-link :to="to" class="article-card-link" />
     <section class="date">
       <time :datetime="createdAtDateTime" itemprop="datepublished">

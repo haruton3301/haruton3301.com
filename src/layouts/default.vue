@@ -1,5 +1,11 @@
 <template>
   <v-app dark>
+    <v-overlay :value="isLoading">
+      <v-row justify="center" class="pb-8">
+        <v-progress-circular indeterminate size="64"></v-progress-circular>
+      </v-row>
+      <v-row>{{ loadMessage }}</v-row>
+    </v-overlay>
     <v-navigation-drawer v-model="drawer" temporary fixed app>
       <v-list>
         <v-list-item
@@ -31,7 +37,7 @@
     <v-main class="my-main">
       <v-container>
         <v-row justify="center" align-content="center">
-          <v-col xl="6" lg="9" md="12" sm="12" cols="12">
+          <v-col xl="6" lg="9" md="12" sm="12" cols="12" class="pa-0">
             <Nuxt />
           </v-col>
         </v-row>
@@ -51,6 +57,7 @@ export default {
   data() {
     return {
       drawer: false,
+      isLoading: true,
       items: [
         {
           icon: 'mdi-home',
@@ -65,6 +72,9 @@ export default {
       ],
       title: 'はるとんのブログ',
     }
+  },
+  mounted() {
+    this.isLoading = false
   },
 }
 </script>

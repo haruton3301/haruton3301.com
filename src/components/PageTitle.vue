@@ -1,7 +1,11 @@
 <template>
-  <section class="my-8 mx-1 pa-4 rainbow-bg">
-    <h1>{{ _title }}</h1>
-  </section>
+  <v-row>
+    <v-col cols="12" class="mt-4 px-0 px-sm-7 px-md-7 px-lg-7 px-xl-7 py-4">
+      <section class="pa-4 rainbow-bg">
+        <h1>{{ _title }}</h1>
+      </section>
+    </v-col>
+  </v-row>
 </template>
 
 <script>

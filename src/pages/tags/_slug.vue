@@ -16,8 +16,8 @@ export default {
   async asyncData({ params }) {
     const entries = await contentfulClient.getEntries({
       limit: 10,
-      'fields.tags.sys.contentType.sys.id': 'tags', // ←これも必要
-      'fields.tags.fields.slug': params.slug,
+      // 'fields.tags.sys.contentType.sys.id': 'tags', // ←これも必要
+      'metadata.tags.sys.id[all]': params.slug,
       content_type: process.env.CTF_BLOG_POST_TYPE_ID,
       order: 'sys.createdAt',
     })
