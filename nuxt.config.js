@@ -105,12 +105,24 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    terser:
+      process.env.NODE_ENV === 'production'
+        ? {
+            terserOptions: {
+              compress: { drop_console: true },
+            },
+          }
+        : {},
+  },
 
-  generate: { fallback: '404.html' },
+  generate: {
+    fallback: '404.html',
+  },
 
   // dotenv
   env: {
+    NODE_ENV: process.env.NODE_ENV,
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
     CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,

@@ -27,6 +27,7 @@
         >{{ tag.name }}</nuxt-link
       >
     </section>
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <section v-html="content"></section>
   </article>
 </template>

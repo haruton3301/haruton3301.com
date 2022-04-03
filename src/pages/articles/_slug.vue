@@ -17,7 +17,6 @@ export default {
         limit: 1,
       })
       .then((entries) => {
-        console.log(entries)
         return {
           post: entries.items[0],
         }

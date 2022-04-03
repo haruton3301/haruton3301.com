@@ -17,7 +17,7 @@ export default {
         order: 'sys.createdAt',
       })
       .then((entries) => {
-        console.warn(entries.items)
+        console.log(entries.items)
         return {
           posts: entries.items,
         }
