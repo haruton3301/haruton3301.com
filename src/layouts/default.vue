@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer v-model="drawer" :clipped="clipped" fixed app>
+    <v-navigation-drawer v-model="drawer" temporary fixed app>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -28,12 +28,16 @@
       </nuxt-link>
       <v-spacer />
     </v-app-bar>
-    <v-main>
+    <v-main class="my-main">
       <v-container>
-        <Nuxt />
+        <v-row justify="center" align-content="center">
+          <v-col xl="6" lg="9" md="12" sm="12" cols="12">
+            <Nuxt />
+          </v-col>
+        </v-row>
       </v-container>
     </v-main>
-    <v-footer app>
+    <v-footer app absolute class="my-footer">
       <v-spacer />
       <span>&copy; 2022 {{ title }}</span>
       <v-spacer />
@@ -46,7 +50,6 @@ export default {
   name: 'DefaultLayout',
   data() {
     return {
-      clipped: false,
       drawer: false,
       items: [
         {
@@ -54,11 +57,11 @@ export default {
           title: 'Home',
           to: '/',
         },
-        {
-          icon: 'mdi-email',
-          title: 'Contact',
-          to: '/contact',
-        },
+        // {
+        //   icon: 'mdi-email',
+        //   title: 'Contact',
+        //   to: '/contact',
+        // },
       ],
       title: 'はるとんのブログ',
     }
@@ -86,7 +89,7 @@ header {
   display: block;
   height: 100%;
   padding: 0 32px;
-  border-radius: 8px;
+  border-radius: 16px;
   color: gray !important;
 }
 .header-logo img {
@@ -96,5 +99,18 @@ header {
   user-select: none; /* CSS3 */
   -moz-user-select: none; /* Firefox */
   -webkit-user-select: none; /* Safari、Chromeなど */
+}
+
+.my-main {
+  background-color: #f5f5f5;
+}
+
+.my-footer {
+  background-color: #2f3232 !important;
+  color: #ffffff !important;
+}
+
+.white-bg {
+  background-color: #ffffff;
 }
 </style>

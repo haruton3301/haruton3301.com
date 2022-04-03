@@ -1,5 +1,5 @@
 <template>
-  <Article :fields="post.fields" />
+  <Article :post="post" />
 </template>
 
 <script>
