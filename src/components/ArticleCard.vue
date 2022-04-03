@@ -13,9 +13,9 @@
       </time>
       に投稿
     </section>
-    <seciton>
+    <section>
       <h2>{{ title }}</h2>
-    </seciton>
+    </section>
     <section class="tags mb-1">
       <v-icon class="mr-1 tag-icon">mdi-tag</v-icon>
       <nuxt-link
@@ -63,7 +63,6 @@ export default {
           to: `/tags/${this.post.fields.tags[i].fields.slug}`,
         })
       }
-      console.log(tags)
       return tags
     },
   },

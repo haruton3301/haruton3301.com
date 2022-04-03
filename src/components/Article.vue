@@ -72,7 +72,6 @@ export default {
           to: `/tags/${this.post.fields.tags[i].fields.slug}`,
         })
       }
-      console.log(tags)
       return tags
     },
   },
