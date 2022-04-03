@@ -64,11 +64,16 @@ export default {
           title: 'Home',
           to: '/',
         },
-        // {
-        //   icon: 'mdi-email',
-        //   title: 'Contact',
-        //   to: '/contact',
-        // },
+        {
+          icon: 'mdi-email',
+          title: 'Contact',
+          to: '/contact',
+        },
+        {
+          icon: 'mdi-shield',
+          title: 'Policy',
+          to: '/policy',
+        },
       ],
       title: 'はるとんのブログ',
     }
