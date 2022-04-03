@@ -26,13 +26,12 @@
     </v-navigation-drawer>
     <v-app-bar fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-spacer />
+
       <nuxt-link v-ripple to="/" class="header-logo">
         <v-row class="ma-0" justify="center" style="height: 100%">
           <img src="~/assets/header_logo.png" />
         </v-row>
       </nuxt-link>
-      <v-spacer />
     </v-app-bar>
     <v-main class="my-main">
       <v-container>
@@ -81,6 +80,14 @@ export default {
   mounted() {
     this.isLoading = false
   },
+  methods: {
+    start() {
+      this.isLoading = true
+    },
+    finish() {
+      this.isLoading = false
+    },
+  },
 }
 </script>
 
@@ -115,6 +122,11 @@ header {
 }
 
 .header-logo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 240px;
   display: block;
   height: 100%;
   padding: 0 32px;

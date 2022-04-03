@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import contentfulClient from './src/plugins/contentful.js'
 
 const baseUrl = 'https://haruton3301.com'
 
@@ -117,6 +118,19 @@ export default {
 
   generate: {
     fallback: '404.html',
+    routes() {
+      return contentfulClient
+        .getEntries({
+          content_type: 'article',
+        })
+        .then((entries) => {
+          return entries.items.map((entry) => {
+            return {
+              route: `articles/${entry.fields.slug}`,
+            }
+          })
+        })
+    },
   },
 
   // dotenv
