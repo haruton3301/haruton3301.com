@@ -1,5 +1,8 @@
 <template>
-  <ArticleList :posts="posts" />
+  <div>
+    <PageTitle :title="title" />
+    <ArticleList :posts="posts" />
+  </div>
 </template>
 
 <script>
@@ -7,6 +10,7 @@ import contentfulClient from '@/plugins/contentful'
 
 export default {
   components: {
+    PageTitle: () => import('@/components/PageTitle.vue'),
     ArticleList: () => import('@/components/ArticleList.vue'),
   },
   asyncData() {
@@ -25,7 +29,9 @@ export default {
       .catch(console.error)
   },
   data() {
-    return {}
+    return {
+      title: 'Articles',
+    }
   },
 }
 </script>

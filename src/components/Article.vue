@@ -17,7 +17,7 @@
     <section>
       <h1>{{ title }}</h1>
     </section>
-    <section class="tags mb-8">
+    <section class="tags mt-2 mb-8">
       <v-icon class="mr-1">mdi-tag</v-icon>
       <nuxt-link
         v-for="tag in tags"
@@ -97,6 +97,7 @@ export default {
     color: rgba(0, 0, 0, 0.87);
     text-wrap: break-word;
     word-break: break-all;
+    text-align: left;
   }
   h2 {
     font-size: 28px;

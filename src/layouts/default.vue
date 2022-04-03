@@ -72,6 +72,20 @@ export default {
 <style>
 header {
   border-top: 4px solid;
+  border-image: -moz-linear-gradient(
+      to right,
+      rgb(64, 224, 208),
+      rgb(255, 140, 0) 40%,
+      rgb(237, 227, 232)
+    )
+    1 / 1 / 0 stretch;
+  border-image: -webkit-linear-gradient(
+      to right,
+      rgb(64, 224, 208),
+      rgb(255, 140, 0) 40%,
+      rgb(237, 227, 232)
+    )
+    1 / 1 / 0 stretch;
   border-image: linear-gradient(
       to right,
       rgb(64, 224, 208),

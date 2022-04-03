@@ -1,7 +1,7 @@
 <template>
   <section class="my-8 mx-1">
     <v-row>
-      <v-col v-for="(post, key) in posts" :key="key" cols="12" class="pa-2">
+      <v-col v-for="(post, key) in posts" :key="key" cols="12" class="pa-0">
         <article>
           <ArticleCard :post="post" />
         </article>
