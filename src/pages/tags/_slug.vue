@@ -14,12 +14,12 @@ export default {
     ArticleList: () => import('@/components/ArticleList.vue'),
   },
   async asyncData({ params }) {
-    const [entries, tag] = await Promise.all([
+    const [entries, tags] = await Promise.all([
       contentfulClient.getEntries({
         limit: 10,
         // 'fields.tags.sys.contentType.sys.id': 'tags', // ←これも必要
         'metadata.tags.sys.id[all]': params.slug,
-        content_type: process.env.CTF_BLOG_POST_TYPE_ID,
+        content_type: 'article',
         order: 'sys.createdAt',
       }),
       contentfulClient.getEntries({
@@ -30,7 +30,7 @@ export default {
       }),
     ])
 
-    const tagName = tag.items[0].fields.name
+    const tagName = tags.items[0].fields.name
 
     return {
       posts: entries.items,

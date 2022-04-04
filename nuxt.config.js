@@ -118,18 +118,28 @@ export default {
 
   generate: {
     fallback: '404.html',
-    routes() {
-      return contentfulClient
-        .getEntries({
+    async routes() {
+      const [entries, tags] = await Promise.all([
+        contentfulClient.getEntries({
           content_type: 'article',
-        })
-        .then((entries) => {
-          return entries.items.map((entry) => {
-            return {
-              route: `articles/${entry.fields.slug}`,
-            }
-          })
-        })
+        }),
+        contentfulClient.getEntries({
+          content_type: 'tags',
+        }),
+      ])
+
+      const articlesRoutes = entries.items.map((entry) => {
+        return {
+          route: `articles/${entry.fields.slug}`,
+        }
+      })
+      const tagsRoutes = tags.items.map((entry) => {
+        return {
+          route: `tags/${entry.fields.slug}`,
+        }
+      })
+
+      return articlesRoutes.concat(tagsRoutes)
     },
   },
 
@@ -138,7 +148,6 @@ export default {
     NODE_ENV: process.env.NODE_ENV,
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
-    CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
   },
 }

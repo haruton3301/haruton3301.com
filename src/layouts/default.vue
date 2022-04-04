@@ -4,7 +4,6 @@
       <v-row justify="center" class="pb-8">
         <v-progress-circular indeterminate size="64"></v-progress-circular>
       </v-row>
-      <v-row>{{ loadMessage }}</v-row>
     </v-overlay>
     <v-navigation-drawer v-model="drawer" temporary fixed app>
       <v-list>

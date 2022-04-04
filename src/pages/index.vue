@@ -13,7 +13,7 @@ export default {
     return contentfulClient
       .getEntries({
         limit: 10,
-        content_type: process.env.CTF_BLOG_POST_TYPE_ID,
+        content_type: 'article',
         order: 'sys.createdAt',
       })
       .then((entries) => {
