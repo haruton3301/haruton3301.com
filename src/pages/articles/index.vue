@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Breadcrumb :breadcrumbs="breadcrumbs" />
     <PageTitle :title="title" />
     <ArticleList :posts="posts" />
   </div>
@@ -10,13 +11,14 @@ import contentfulClient from '@/plugins/contentful'
 
 export default {
   components: {
+    Breadcrumb: () => import('@/components/Breadcrumb.vue'),
     PageTitle: () => import('@/components/PageTitle.vue'),
     ArticleList: () => import('@/components/ArticleList.vue'),
   },
   asyncData() {
     return contentfulClient
       .getEntries({
-        limit: 10,
+        // limit: 10,
         content_type: 'article',
         order: 'sys.createdAt',
       })
@@ -30,8 +32,23 @@ export default {
   },
   data() {
     return {
-      title: 'Articles',
+      title: '記事一覧',
     }
+  },
+  computed: {
+    breadcrumbs() {
+      return {
+        data: [
+          {
+            name: 'Home',
+            path: '/',
+          },
+          {
+            name: '記事一覧',
+          },
+        ],
+      }
+    },
   },
 }
 </script>

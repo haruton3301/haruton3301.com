@@ -9,7 +9,22 @@
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
-          :key="i"
+          :key="`${i}-1`"
+          :to="item.to"
+          router
+          exact
+        >
+          <v-list-item-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title" />
+          </v-list-item-content>
+        </v-list-item>
+        <v-divider class="mx-2 mt-3"></v-divider>
+        <v-list-item
+          v-for="(item, i) in itemsBottom"
+          :key="`${i}-2`"
           :to="item.to"
           router
           exact
@@ -33,18 +48,46 @@
       </nuxt-link>
     </v-app-bar>
     <v-main class="my-main">
-      <v-container>
+      <v-container class="pa-0">
         <v-row justify="center" align-content="center">
-          <v-col xl="6" lg="9" md="12" sm="12" cols="12" class="pa-0">
+          <v-col xl="6" lg="9" md="12" sm="12" cols="12" class="pa-3 mb-8">
             <Nuxt />
           </v-col>
         </v-row>
       </v-container>
     </v-main>
     <v-footer app absolute class="my-footer">
-      <v-spacer />
-      <span>&copy; 2022 {{ title }}</span>
-      <v-spacer />
+      <div class="link">
+        <v-btn
+          href="https://twitter.com/haruton3301"
+          text
+          color="link"
+          min-height="20"
+          min-width="36"
+          class="x-small post-link align-center"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+        >
+          <v-icon color="white">mdi-twitter</v-icon>
+        </v-btn>
+        <v-btn
+          href="https://github.com/kduxwr"
+          text
+          color="link"
+          min-height="20"
+          min-width="36"
+          class="x-small post-link align-center"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+        >
+          <v-icon color="white">mdi-github</v-icon>
+        </v-btn>
+      </div>
+      <div class="credit">
+        <v-spacer />
+        <span>&copy; 2022 {{ title }}</span>
+        <v-spacer />
+      </div>
     </v-footer>
   </v-app>
 </template>
@@ -63,17 +106,39 @@ export default {
           to: '/',
         },
         {
-          icon: 'mdi-email',
-          title: 'Contact',
-          to: '/contact',
+          icon: 'mdi-application',
+          title: '記事一覧',
+          to: '/articles',
         },
         {
-          icon: 'mdi-shield',
-          title: 'Policy',
-          to: '/policy',
+          icon: 'mdi-tag',
+          title: 'タグ一覧',
+          to: '/tags',
         },
       ],
+      itemsBottom: [
+        {
+          icon: 'mdi-shield',
+          title: 'プライバシーポリシー',
+          to: '/policy',
+        },
+        // {
+        //   icon: 'mdi-email',
+        //   title: 'お問合わせ',
+        //   to: '/contact',
+        // },
+      ],
       title: 'はるとんのブログ',
+    }
+  },
+  head() {
+    return {
+      link: [
+        {
+          rel: 'canonical',
+          href: `https://haruton3301.com${this.$route.path}`,
+        },
+      ],
     }
   },
   mounted() {
@@ -146,11 +211,36 @@ header {
 }
 
 .my-footer {
+  display: block;
   background-color: #2f3232 !important;
   color: #ffffff !important;
+}
+.my-footer .link {
+  text-align: center;
+  color: #ffffff;
+  margin: 4px 0;
+}
+
+.my-footer .link a {
+  padding: 0 !important;
+}
+
+.my-footer .credit {
+  text-align: center;
+  margin: 4px 0;
 }
 
 .white-bg {
   background-color: #ffffff;
+}
+.post-link {
+  display: inline-block;
+  word-break: break-all;
+  padding: 2px 4px;
+  border-radius: 5px;
+  text-transform: none !important;
+  white-space: normal;
+  max-width: calc(100% - 30px);
+  height: inherit !important;
 }
 </style>

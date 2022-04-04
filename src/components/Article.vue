@@ -1,7 +1,7 @@
 <template>
-  <v-row>
+  <v-row class="">
     <v-col cols="12" class="px-0 px-sm-7 px-md-7 px-lg-7 px-xl-7 py-0">
-      <article class="my-8 px-7 py-7 white-bg article-single">
+      <article class="px-7 py-7 white-bg article-single">
         <section class="date">
           <span class="mr-3">
             投稿日

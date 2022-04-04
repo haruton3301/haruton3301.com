@@ -1,5 +1,9 @@
 <template>
-  <ArticleList :posts="posts" />
+  <div>
+    <Breadcrumb :breadcrumbs="breadcrumbs" />
+    <PageTitle :title="title" />
+    <ArticleList :posts="posts" />
+  </div>
 </template>
 
 <script>
@@ -7,6 +11,8 @@ import contentfulClient from '@/plugins/contentful'
 
 export default {
   components: {
+    Breadcrumb: () => import('@/components/Breadcrumb.vue'),
+    PageTitle: () => import('@/components/PageTitle.vue'),
     ArticleList: () => import('@/components/ArticleList.vue'),
   },
   asyncData() {
@@ -25,7 +31,20 @@ export default {
       .catch(console.error)
   },
   data() {
-    return {}
+    return {
+      title: '新着記事',
+    }
+  },
+  computed: {
+    breadcrumbs() {
+      return {
+        data: [
+          {
+            name: 'Home',
+          },
+        ],
+      }
+    },
   },
 }
 </script>

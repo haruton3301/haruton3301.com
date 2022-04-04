@@ -75,6 +75,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/sitemap',
     '@nuxtjs/dotenv',
     [
       '@nuxtjs/google-gtag',
@@ -106,6 +107,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    analyze: true, // 本番環境ではfalseに設定してください
     terser:
       process.env.NODE_ENV === 'production'
         ? {
@@ -149,5 +151,9 @@ export default {
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
+  },
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://haruton3301.com',
   },
 }

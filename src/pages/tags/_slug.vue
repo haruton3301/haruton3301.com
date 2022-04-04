@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Breadcrumb :breadcrumbs="breadcrumbs" />
     <PageTitle :title="title" />
     <ArticleList :posts="posts" />
   </div>
@@ -10,13 +11,13 @@ import contentfulClient from '@/plugins/contentful'
 
 export default {
   components: {
+    Breadcrumb: () => import('@/components/Breadcrumb.vue'),
     PageTitle: () => import('@/components/PageTitle.vue'),
     ArticleList: () => import('@/components/ArticleList.vue'),
   },
   async asyncData({ params }) {
     const [entries, tags] = await Promise.all([
       contentfulClient.getEntries({
-        limit: 10,
         // 'fields.tags.sys.contentType.sys.id': 'tags', // ←これも必要
         'metadata.tags.sys.id[all]': params.slug,
         content_type: 'article',
@@ -39,6 +40,25 @@ export default {
   },
   data() {
     return {}
+  },
+  computed: {
+    breadcrumbs() {
+      return {
+        data: [
+          {
+            name: 'Home',
+            path: '/',
+          },
+          {
+            name: 'タグ一覧',
+            path: '/tags/',
+          },
+          {
+            name: this.title,
+          },
+        ],
+      }
+    },
   },
 }
 </script>
