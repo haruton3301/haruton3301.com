@@ -211,7 +211,7 @@ header {
 }
 
 .my-footer {
-  display: block;
+  display: block !important;
   background-color: #2f3232 !important;
   color: #ffffff !important;
 }
