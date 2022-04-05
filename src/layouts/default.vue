@@ -50,7 +50,7 @@
     <v-main class="my-main">
       <v-container>
         <v-row justify="center" align-content="center">
-          <v-col xl="6" lg="9" md="12" sm="12" cols="12" class="mb-8 pa-3">
+          <v-col xl="6" lg="9" md="12" sm="12" cols="12" class="mb-5 pa-3">
             <Nuxt />
           </v-col>
         </v-row>
