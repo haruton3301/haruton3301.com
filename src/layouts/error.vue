@@ -3,7 +3,7 @@
     <v-row class="mt-8" justify="center">
       <v-col
         cols="12"
-        class="px-0 px-sm-7 px-md-7 px-lg-7 px-xl-7 py-0 error-text-wrap"
+        class="px-0 px-sm-4 px-md-4 px-lg-4 px-xl-4 py-0 error-text-wrap"
       >
         <div class="error-text">404 Not Found.</div>
         <div class="link py-4">

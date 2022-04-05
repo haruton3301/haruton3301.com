@@ -3,7 +3,7 @@
     <Breadcrumb :breadcrumbs="breadcrumbs" />
     <PageTitle :title="title" />
     <v-row>
-      <v-col cols="12" class="px-0 px-sm-7 px-md-7 px-lg-7 px-xl-7 py-0">
+      <v-col cols="12" class="px-0 px-sm-4 px-md-4 px-lg-4 px-xl-4 py-0">
         <article class="my-0 px-7 py-7 white-bg article-single">
           <p>
             当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を使用しています。

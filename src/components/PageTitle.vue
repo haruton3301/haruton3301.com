@@ -1,6 +1,6 @@
 <template>
   <v-row class="pb-5">
-    <v-col cols="12" class="px-0 px-sm-7 px-md-7 px-lg-7 px-xl-7 py-0">
+    <v-col cols="12" class="px-0 px-sm-4 px-md-4 px-lg-4 px-xl-4 py-0">
       <section class="rainbow-bg">
         <h1>{{ _title }}</h1>
       </section>

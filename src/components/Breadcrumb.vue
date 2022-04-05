@@ -1,6 +1,6 @@
 <template>
   <v-row class="mt-0">
-    <v-col cols="12" class="px-4 px-sm-7 px-md-7 px-lg-7 px-xl-7 pt-5 pb-2">
+    <v-col cols="12" class="px-4 px-sm-4 px-md-4 px-lg-4 px-xl-4 pt-2 pb-2">
       <div class="l-breadcrumb">
         <div class="l-breadcrumb__inner">
           <ul class="l-breadcrumb__items">
