@@ -15,6 +15,7 @@ export default {
     PageTitle: () => import('@/components/PageTitle.vue'),
     ArticleList: () => import('@/components/ArticleList.vue'),
   },
+
   async asyncData({ params }) {
     const [entries, tags] = await Promise.all([
       contentfulClient.getEntries({
@@ -36,10 +37,36 @@ export default {
     return {
       posts: entries.items,
       title: tagName,
+      slug: params,
     }
   },
+
   data() {
     return {}
+  },
+  head() {
+    return {
+      // nuxt.config.jsの%sに反映される内容
+      title: this.title,
+      meta: [
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `https://haruton3301.com/tags/${this.slug}`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${this.title} | はるとんのブログ`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: `タグ${this.title}の一覧ページです。`,
+        },
+      ],
+    }
   },
   computed: {
     breadcrumbs() {

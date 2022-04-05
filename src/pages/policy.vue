@@ -34,6 +34,30 @@ export default {
       title: 'プライバシーポリシー',
     }
   },
+  head() {
+    return {
+      // nuxt.config.jsの%sに反映される内容
+      title: 'プライバシーポリシー',
+      meta: [
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `https://haruton3301.com/policy`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `プライバシーポリシー | はるとんのブログ`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: 'プライバシーポリシーのページです。',
+        },
+      ],
+    }
+  },
   computed: {
     breadcrumbs() {
       return {

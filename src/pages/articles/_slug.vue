@@ -31,6 +31,34 @@ export default {
     return {
       // nuxt.config.jsの%sに反映される内容
       title: this.post.fields.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.post.fields.description,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.post.fields.keywords,
+        },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: `https://haruton3301.com/articles/${this.post.fields.slug}`,
+        },
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${this.post.fields.title} | はるとんのブログ`,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.post.fields.description,
+        },
+      ],
     }
   },
   computed: {

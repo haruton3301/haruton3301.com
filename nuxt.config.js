@@ -34,7 +34,7 @@ export default {
         content: siteDescription,
       },
       { hid: 'og:site_name', property: 'og:site_name', content: siteTitle },
-      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:type', property: 'og:type', content: 'blog' },
       {
         hid: 'og:url',
         property: 'og:url',
