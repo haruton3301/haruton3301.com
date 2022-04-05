@@ -71,38 +71,101 @@ export default {
 .article-card {
   position: relative;
 }
-.article-card:hover::after {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  content: '';
-  pointer-events: none;
+@media screen and (min-width: 960px) {
+  .article-card:hover::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
+    pointer-events: none;
 
-  border: 4px solid;
-  border-radius: 10px;
-  border-image: -moz-linear-gradient(
+    border: 4px solid;
+    border-radius: 10px;
+    border-image: -moz-linear-gradient(
+        to right,
+        rgb(64, 224, 208),
+        rgb(255, 140, 0) 40%,
+        rgb(237, 227, 232)
+      )
+      1 / 1 / 0 stretch;
+    border-image: -webkit-linear-gradient(
+        to right,
+        rgb(64, 224, 208),
+        rgb(255, 140, 0) 40%,
+        rgb(237, 227, 232)
+      )
+      1 / 1 / 0 stretch;
+    border-image: linear-gradient(
+        to right,
+        rgb(64, 224, 208),
+        rgb(255, 140, 0) 40%,
+        rgb(237, 227, 232)
+      )
+      1 / 1 / 0 stretch;
+  }
+  .article-card:hover h2 {
+    background: -moz-linear-gradient(to right, #40e0d0, #ff8c00 40%, #ff0080);
+    background: -webkit-linear-gradient(
       to right,
-      rgb(64, 224, 208),
-      rgb(255, 140, 0) 40%,
-      rgb(237, 227, 232)
-    )
-    1 / 1 / 0 stretch;
-  border-image: -webkit-linear-gradient(
+      #40e0d0,
+      #ff8c00 40%,
+      #ff0080
+    );
+    background: linear-gradient(to right, #40e0d0, #ff8c00 40%, #ff0080);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(128, 128, 128, 0);
+  }
+}
+@media screen and (max-width: 959px) {
+  .article-card:active::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
+    pointer-events: none;
+
+    border: 4px solid;
+    border-radius: 10px;
+    border-image: -moz-linear-gradient(
+        to right,
+        rgb(64, 224, 208),
+        rgb(255, 140, 0) 40%,
+        rgb(237, 227, 232)
+      )
+      1 / 1 / 0 stretch;
+    border-image: -webkit-linear-gradient(
+        to right,
+        rgb(64, 224, 208),
+        rgb(255, 140, 0) 40%,
+        rgb(237, 227, 232)
+      )
+      1 / 1 / 0 stretch;
+    border-image: linear-gradient(
+        to right,
+        rgb(64, 224, 208),
+        rgb(255, 140, 0) 40%,
+        rgb(237, 227, 232)
+      )
+      1 / 1 / 0 stretch;
+  }
+  .article-card:active h2 {
+    background: -moz-linear-gradient(to right, #40e0d0, #ff8c00 40%, #ff0080);
+    background: -webkit-linear-gradient(
       to right,
-      rgb(64, 224, 208),
-      rgb(255, 140, 0) 40%,
-      rgb(237, 227, 232)
-    )
-    1 / 1 / 0 stretch;
-  border-image: linear-gradient(
-      to right,
-      rgb(64, 224, 208),
-      rgb(255, 140, 0) 40%,
-      rgb(237, 227, 232)
-    )
-    1 / 1 / 0 stretch;
+      #40e0d0,
+      #ff8c00 40%,
+      #ff0080
+    );
+    background: linear-gradient(to right, #40e0d0, #ff8c00 40%, #ff0080);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: rgba(128, 128, 128, 0);
+  }
 }
 .article-card-link {
   position: absolute;
@@ -116,14 +179,7 @@ h2 {
   display: inline-block;
   font-size: 24px;
 }
-.article-card:hover h2 {
-  background: -moz-linear-gradient(to right, #40e0d0, #ff8c00 40%, #ff0080);
-  background: -webkit-linear-gradient(to right, #40e0d0, #ff8c00 40%, #ff0080);
-  background: linear-gradient(to right, #40e0d0, #ff8c00 40%, #ff0080);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: rgba(128, 128, 128, 0);
-}
+
 .date {
   font-size: 14px;
   line-height: 1.8;
