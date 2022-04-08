@@ -38,6 +38,7 @@
 
 <script>
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
+import { BLOCKS } from '@contentful/rich-text-types'
 import { format } from 'date-fns'
 import { ja } from 'date-fns/locale'
 
@@ -65,7 +66,18 @@ export default {
       return this.post.fields.title
     },
     content() {
-      return documentToHtmlString(this.post.fields.content)
+      const options = {
+        // renderMark: {
+        //   [MARKS.BOLD]: (text) => `<custom-bold>${text}<custom-bold>`,
+        // },
+        renderNode: {
+          [BLOCKS.EMBEDDED_ASSET]: (node) => {
+            console.log(JSON.stringify(node, null, '\t'))
+            return `<img class='image-asset' src="${node.data.target.fields.file.url}"/>`
+          },
+        },
+      }
+      return documentToHtmlString(this.post.fields.content, options)
     },
     tags() {
       const tags = []
@@ -128,6 +140,10 @@ export default {
   }
   .tags a:hover {
     text-decoration: underline;
+  }
+
+  .image-asset {
+    width: 100%;
   }
 }
 </style>
