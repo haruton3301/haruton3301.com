@@ -116,9 +116,11 @@ export default {
     text-align: left;
   }
   h2 {
+    display: block;
     font-size: 28px;
     border-bottom: 1px solid #ddd;
     padding-bottom: 2px;
+    padding-left: 2px;
     font-weight: bold;
     line-height: 1.5;
     font-feature-settings: 'palt';
@@ -143,7 +145,13 @@ export default {
   }
 
   .image-asset {
-    width: 100%;
+    width: 70%;
+    margin-bottom: 8px;
+  }
+  @media screen and (max-width: 959px) {
+    .image-asset {
+      width: 100%;
+    }
   }
 }
 </style>
