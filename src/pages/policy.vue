@@ -15,7 +15,17 @@
             この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。
           </p>
           <p>
-            この規約に関しての詳細はGoogleアナリティクスサービス利用規約のページやGoogleポリシーと規約ページをご覧ください。
+            この規約に関しての詳細は<a
+              href="https://marketingplatform.google.com/about/analytics/terms/jp/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Googleアナリティクスサービス利用規約</a
+            >や<a
+              href="https://policies.google.com/technologies/ads?hl=ja"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Googleのポリシーの規約</a
+            >をご覧ください。
           </p>
         </article>
       </v-col>
