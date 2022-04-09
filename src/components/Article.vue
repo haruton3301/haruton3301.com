@@ -1,7 +1,9 @@
 <template>
   <v-row class="">
     <v-col cols="12" class="px-0 px-sm-4 px-md-4 px-lg-4 px-xl-4 py-0">
-      <article class="px-7 py-7 white-bg article-single">
+      <article
+        class="py-7 py-lg-9 py-xl-9 px-5 px-sm-7 px-md-7 px-lg-9 px-xl-9 white-bg article-single"
+      >
         <section class="date">
           <span class="mr-3">
             投稿日
@@ -30,17 +32,16 @@
           >
         </section>
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <section v-html="content"></section>
+        <section v-html="$md.render(content)"></section>
       </article>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
-import { BLOCKS } from '@contentful/rich-text-types'
 import { format } from 'date-fns'
 import { ja } from 'date-fns/locale'
+import Prism from '~/plugins/prism'
 
 export default {
   props: {
@@ -48,6 +49,9 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  mounted() {
+    Prism.highlightAll()
   },
   computed: {
     createdAt() {
@@ -66,18 +70,23 @@ export default {
       return this.post.fields.title
     },
     content() {
-      const options = {
-        // renderMark: {
-        //   [MARKS.BOLD]: (text) => `<custom-bold>${text}<custom-bold>`,
-        // },
-        renderNode: {
-          [BLOCKS.EMBEDDED_ASSET]: (node) => {
-            console.log(JSON.stringify(node, null, '\t'))
-            return `<img class='image-asset' src="${node.data.target.fields.file.url}"/>`
-          },
-        },
-      }
-      return documentToHtmlString(this.post.fields.content, options)
+      // const options = {
+      //   // renderMark: {
+      //   //   [MARKS.BOLD]: (text) => `<custom-bold>${text}<custom-bold>`,
+      //   // },
+      //   renderNode: {
+      //     [BLOCKS.EMBEDDED_ASSET]: (node) => {
+      //       console.log(JSON.stringify(node, null, '\t'))
+      //       if (process.env.NODE_ENV === 'production') {
+      //         return `あああああ<img class='image-asset' src="${node.data.target.fields.file.url}"/>`
+      //       }
+      //       return `<img class='image-asset' src="${node.data.target.fields.file.url}"/>`
+      //     },
+      //   },
+      // }
+      console.log(this.post.fields.contentMarkdown)
+
+      return this.post.fields.contentMarkdown
     },
     tags() {
       const tags = []
@@ -144,14 +153,35 @@ export default {
     text-decoration: underline;
   }
 
-  .image-asset {
+  ul,
+  ol {
+    margin-bottom: 16px;
+  }
+  ol li {
+    padding: 4px;
+  }
+  ol li::marker {
+    font-size: 110%;
+  }
+
+  img {
     width: 70%;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
   }
   @media screen and (max-width: 959px) {
-    .image-asset {
+    img {
       width: 100%;
     }
+  }
+
+  div.code-toolbar > .toolbar {
+    right: 0.6em !important;
+  }
+  p {
+    padding: 0 4px;
+  }
+  pre {
+    margin-bottom: 16px;
   }
 }
 </style>
