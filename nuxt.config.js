@@ -61,7 +61,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/prism'],
+  plugins: ['~/plugins/prism', '~/plugins/markdownit'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -159,10 +159,5 @@ export default {
   sitemap: {
     path: '/sitemap.xml',
     hostname: 'https://haruton3301.com',
-  },
-
-  markdownit: {
-    injected: true, // 「$md」でどこからでも使えるようにする
-    breaks: true, // 改行を<br/>に変換する
   },
 }

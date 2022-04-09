@@ -187,5 +187,9 @@ export default {
   pre {
     margin-bottom: 16px;
   }
+
+  .code-toolbar code {
+    padding: 0.2em 0;
+  }
 }
 </style>
