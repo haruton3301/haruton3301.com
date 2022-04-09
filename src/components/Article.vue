@@ -116,6 +116,8 @@ export default {
 
 <style lang="scss">
 .article-single {
+  word-break: break-all;
+
   h1 {
     margin-top: 8px;
     font-size: 32px;
