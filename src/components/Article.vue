@@ -181,6 +181,7 @@ export default {
   }
   p {
     padding: 0 4px;
+    word-break: break-all;　
   }
   pre {
     margin-bottom: 16px;
