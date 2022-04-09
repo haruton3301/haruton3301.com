@@ -86,6 +86,7 @@ export default {
         debug: false,
       },
     ],
+    '~/modules/imageDownloader.js',
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -109,7 +110,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    analyze: true, // 本番環境ではfalseに設定してください
+    // analyze: true, // 本番環境ではfalseに設定してください
     terser:
       process.env.NODE_ENV === 'production'
         ? {
