@@ -32,7 +32,7 @@
           >
         </section>
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <section v-html="$md.render(content)"></section>
+        <section v-html="content"></section>
       </article>
     </v-col>
   </v-row>
@@ -41,6 +41,7 @@
 <script>
 import { format } from 'date-fns'
 import { ja } from 'date-fns/locale'
+import DOMParser from 'universal-dom-parser'
 import Prism from '~/plugins/prism'
 
 export default {
@@ -50,9 +51,7 @@ export default {
       required: true,
     },
   },
-  mounted() {
-    Prism.highlightAll()
-  },
+
   computed: {
     createdAt() {
       return this.formatDate(this.post.sys.createdAt)
@@ -70,23 +69,23 @@ export default {
       return this.post.fields.title
     },
     content() {
-      // const options = {
-      //   // renderMark: {
-      //   //   [MARKS.BOLD]: (text) => `<custom-bold>${text}<custom-bold>`,
-      //   // },
-      //   renderNode: {
-      //     [BLOCKS.EMBEDDED_ASSET]: (node) => {
-      //       console.log(JSON.stringify(node, null, '\t'))
-      //       if (process.env.NODE_ENV === 'production') {
-      //         return `あああああ<img class='image-asset' src="${node.data.target.fields.file.url}"/>`
-      //       }
-      //       return `<img class='image-asset' src="${node.data.target.fields.file.url}"/>`
-      //     },
-      //   },
-      // }
-      //console.log(this.post.fields.contentMarkdown)
+      let contentHtml = this.$md.render(this.post.fields.contentMarkdown)
 
-      return this.post.fields.contentMarkdown
+      if (process.env.NODE_ENV === 'production') {
+        const parser = new DOMParser()
+        const dom = parser.parseFromString(contentHtml, 'text/html')
+        const images = dom.querySelectorAll('p img')
+
+        images.forEach((image) => {
+          const src = image.getAttribute('src')
+          const fileName = src.match('.+/(.+?)([?#;].*)?$')[1]
+          const from = `src="${src}"`
+          const to = `src="/images/${fileName}" data-src="${src}"`
+          contentHtml = contentHtml.replaceAll(from, to)
+        })
+      }
+
+      return contentHtml
     },
     tags() {
       const tags = []
@@ -100,6 +99,9 @@ export default {
       }
       return tags
     },
+  },
+  mounted() {
+    Prism.highlightAll()
   },
   methods: {
     formatDate(date) {

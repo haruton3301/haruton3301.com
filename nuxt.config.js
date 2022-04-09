@@ -151,10 +151,12 @@ export default {
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
   },
+
   sitemap: {
     path: '/sitemap.xml',
     hostname: 'https://haruton3301.com',
   },
+
   markdownit: {
     injected: true, // 「$md」でどこからでも使えるようにする
     breaks: true, // 改行を<br/>に変換する
