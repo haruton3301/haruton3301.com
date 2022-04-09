@@ -84,7 +84,7 @@ export default {
       //     },
       //   },
       // }
-      console.log(this.post.fields.contentMarkdown)
+      //console.log(this.post.fields.contentMarkdown)
 
       return this.post.fields.contentMarkdown
     },
