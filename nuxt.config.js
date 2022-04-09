@@ -49,6 +49,10 @@ export default {
       },
       { name: 'twitter:card', content: 'summary' },
       { name: 'format-detection', content: 'telephone=no' },
+      {
+        name: 'google-site-verification',
+        content: 'juL8UZi2OMOrnMylA7f6VtmcuijRVXmd5eozMARyKKA',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
