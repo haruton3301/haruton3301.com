@@ -2,6 +2,7 @@ import { JSDOM } from 'jsdom'
 import path from 'path'
 import fs from 'fs'
 import axios from 'axios'
+import sharp from 'sharp'
 
 const srcList = []
 let imagesDirPath
@@ -60,17 +61,20 @@ module.exports = async function () {
 
   const downloadPromise = (srcUrl, filePath) => {
     return new Promise((resolve, reject) => {
-      if (fs.existsSync(imagesDirPath)) {
+      if (!fs.existsSync(imagesDirPath)) {
         resolve(false)
       }
 
       axios.get(srcUrl, { responseType: 'arraybuffer' }).then(async (res) => {
-        fs.writeFileSync(filePath, new Buffer.from(res.data))
-        if (fs.existsSync(imagesDirPath)) {
-          resolve(false)
-        } else {
-          resolve(true)
-        }
+        sharp(res.data)
+          .resize(600)
+          .toFile(filePath)
+          .then(() => {
+            resolve(true)
+          })
+          .catch((err) => {
+            resolve(err)
+          })
       })
     })
   }
