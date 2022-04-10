@@ -61,28 +61,28 @@ module.exports = async function () {
 
   const downloadPromise = (srcUrl, filePath) => {
     return new Promise((resolve, reject) => {
-      if (!fs.existsSync(imagesDirPath)) {
+      if (fs.existsSync(filePath)) {
         resolve(false)
       }
 
       axios.get(srcUrl, { responseType: 'arraybuffer' }).then(async (res) => {
         const ext = filePath.split('.').pop()
 
-        if (ext === 'gif') {
-          fs.writeFileSync(filePath, new Buffer.from(res.data))
-          resolve(true)
-        } else {
-          sharp(res.data)
-            .resize(600)
-            .toBuffer()
-            .then((data) => {
-              fs.writeFileSync(filePath, data)
-              resolve(true)
-            })
-            .catch((err) => {
-              resolve(err)
-            })
-        }
+        // if (ext === 'gif') {
+        fs.writeFileSync(filePath, new Buffer.from(res.data))
+        resolve(true)
+        // } else {
+        //   sharp(res.data)
+        //     .resize(600)
+        //     .toBuffer()
+        //     .then((data) => {
+        //       fs.writeFileSync(filePath, data)
+        //       resolve(true)
+        //     })
+        //     .catch((err) => {
+        //       resolve(err)
+        //     })
+        // }
       })
     })
   }
