@@ -86,7 +86,7 @@ export default {
         debug: false,
       },
     ],
-    '~/modules/imageDownloader.js',
+    // '~/modules/imageDownloader.js',
   ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
