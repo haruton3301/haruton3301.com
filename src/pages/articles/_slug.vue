@@ -2,6 +2,8 @@
   <div>
     <Breadcrumb :breadcrumbs="breadcrumbs" />
     <Article :post="post" />
+    <PageTitle :title="title" class="mt-12" />
+    <ArticleList :posts="relatedPosts" />
   </div>
 </template>
 
@@ -12,20 +14,41 @@ export default {
   components: {
     Article: () => import('@/components/Article.vue'),
     Breadcrumb: () => import('@/components/Breadcrumb.vue'),
+    PageTitle: () => import('@/components/PageTitle.vue'),
+    ArticleList: () => import('@/components/ArticleList.vue'),
   },
-  asyncData({ params }) {
-    return contentfulClient
-      .getEntries({
-        content_type: 'article',
-        'fields.slug': params.slug,
-        limit: 1,
-      })
-      .then((entries) => {
-        return {
-          post: entries.items[0],
-        }
-      })
-      .catch(console.error)
+  async asyncData({ params }) {
+    const entries = await contentfulClient.getEntries({
+      content_type: 'article',
+      'fields.slug': params.slug,
+      limit: 1,
+    })
+
+    let tagQuery = ''
+    for (let i = 0; i < entries.items[0].fields.tags.length; i++) {
+      const separater =
+        i !== entries.items[0].fields.tags.length - 1 ? ', ' : ''
+      tagQuery += `${entries.items[0].fields.tags[i].fields.slug}${separater}`
+    }
+
+    console.log(tagQuery)
+
+    const _relatedPosts = await contentfulClient.getEntries({
+      content_type: 'article',
+      order: '-sys.createdAt',
+      'metadata.tags.sys.id[in]': tagQuery,
+      limit: 6,
+    })
+
+    const nowSlug = entries.items[0].fields.slug
+    _relatedPosts.items = _relatedPosts.items.filter(
+      (item) => !(item.fields.slug === nowSlug)
+    )
+
+    return {
+      post: entries.items[0],
+      relatedPosts: _relatedPosts.items,
+    }
   },
   head() {
     return {
@@ -59,6 +82,11 @@ export default {
           content: this.post.fields.description,
         },
       ],
+    }
+  },
+  data() {
+    return {
+      title: '関連記事',
     }
   },
   computed: {
