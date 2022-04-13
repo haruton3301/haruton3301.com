@@ -21,7 +21,7 @@ export default {
       .getEntries({
         // limit: 10,
         content_type: 'article',
-        order: 'sys.createdAt',
+        order: '-sys.createdAt',
       })
       .then((entries) => {
         console.log(entries.items)

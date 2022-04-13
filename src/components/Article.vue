@@ -41,7 +41,6 @@
 <script>
 import { format } from 'date-fns'
 import { ja } from 'date-fns/locale'
-import DOMParser from 'universal-dom-parser'
 import Prism from '~/plugins/prism'
 
 export default {
@@ -69,7 +68,7 @@ export default {
       return this.post.fields.title
     },
     content() {
-      let contentHtml = this.$md.render(this.post.fields.contentMarkdown)
+      const contentHtml = this.$md.render(this.post.fields.contentMarkdown)
 
       // if (process.env.NODE_ENV !== 'production') {
       //   const parser = new DOMParser()
@@ -190,6 +189,15 @@ export default {
 
   .code-toolbar code {
     padding: 0.2em 0;
+  }
+
+  .youtube {
+    max-width: 600px;
+    aspect-ratio: 16 / 9;
+  }
+  .youtube iframe {
+    width: 100%;
+    height: 100%;
   }
 }
 </style>

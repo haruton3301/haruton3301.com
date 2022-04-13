@@ -22,7 +22,7 @@ export default {
         // 'fields.tags.sys.contentType.sys.id': 'tags', // ←これも必要
         'metadata.tags.sys.id[all]': params.slug,
         content_type: 'article',
-        order: 'sys.createdAt',
+        order: '-sys.createdAt',
       }),
       contentfulClient.getEntries({
         limit: 1,
