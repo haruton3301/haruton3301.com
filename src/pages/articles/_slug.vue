@@ -2,7 +2,7 @@
   <div>
     <Breadcrumb :breadcrumbs="breadcrumbs" />
     <Article :post="post" />
-    <PageTitle :title="title" class="mt-12" />
+    <PageTitle v-if="relatedPosts.length > 0" :title="title" class="mt-12" />
     <ArticleList :posts="relatedPosts" />
   </div>
 </template>
