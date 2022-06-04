@@ -122,11 +122,11 @@ export default {
           title: 'プライバシーポリシー',
           to: '/policy',
         },
-        // {
-        //   icon: 'mdi-email',
-        //   title: 'お問合わせ',
-        //   to: '/contact',
-        // },
+        {
+          icon: 'mdi-email',
+          title: 'お問合わせ',
+          to: '/contact',
+        },
       ],
       title: 'はるとんのブログ',
     }
