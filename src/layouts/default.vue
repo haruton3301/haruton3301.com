@@ -1,11 +1,11 @@
 <template>
   <v-app dark>
-    <v-overlay :value="isLoading">
+    <v-overlay :value="isLoading" class="overlay">
       <v-row justify="center" class="pb-8">
         <v-progress-circular indeterminate size="64"></v-progress-circular>
       </v-row>
     </v-overlay>
-    <v-navigation-drawer v-model="drawer" temporary fixed app>
+    <v-navigation-drawer v-model="drawer" temporary fixed app hide-overlay>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -142,7 +142,9 @@ export default {
     }
   },
   mounted() {
-    this.isLoading = false
+    this.$nextTick(function () {
+      this.isLoading = false
+    })
   },
   methods: {
     start() {
@@ -242,5 +244,9 @@ header {
   white-space: normal;
   max-width: calc(100% - 30px);
   height: inherit !important;
+}
+
+.overlay {
+  z-index: 10000 !important;
 }
 </style>
