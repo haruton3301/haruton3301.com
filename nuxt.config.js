@@ -86,6 +86,15 @@ export default {
         debug: false,
       },
     ],
+    [
+      '@nuxtjs/google-adsense',
+      {
+        id: process.env.GOOGLE_ADSENSE_ID,
+        pageLevelAds: true,
+        // analyticsUacct: process.env.GOOGLE_ANALYTICS_ID, // アナリティクスと連携する場合のみ必要
+        // analyticsDomainName: baseUrl, // アナリティクスと連携する場合のみ必要
+      },
+    ],
     // '~/modules/imageDownloader.js',
   ],
 
@@ -154,6 +163,7 @@ export default {
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
+    GOOGLE_ADSENSE_ID: process.env.GOOGLE_ADSENSE_ID,
   },
 
   sitemap: {
