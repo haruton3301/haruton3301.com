@@ -199,5 +199,42 @@ export default {
     width: 100%;
     height: 100%;
   }
+
+  .entry-card {
+    width: 100%;
+    max-width: 500px;
+    font-size: 18px;
+
+    border: 4px solid;
+    border-radius: 10px;
+    border-image: -moz-linear-gradient(
+        to right,
+        rgb(64, 224, 208),
+        rgb(255, 140, 0) 40%,
+        rgb(237, 227, 232)
+      )
+      1 / 1 / 0 stretch;
+    border-image: -webkit-linear-gradient(
+        to right,
+        rgb(64, 224, 208),
+        rgb(255, 140, 0) 40%,
+        rgb(237, 227, 232)
+      )
+      1 / 1 / 0 stretch;
+    border-image: linear-gradient(
+        to right,
+        rgb(64, 224, 208),
+        rgb(255, 140, 0) 40%,
+        rgb(237, 227, 232)
+      )
+      1 / 1 / 0 stretch;
+  }
+
+  .entry-card a {
+    padding: 8px;
+    color: rgba(0, 0, 0, 0.87);
+    text-decoration: none;
+    display: inline-block;
+  }
 }
 </style>
