@@ -118,10 +118,16 @@ export default {
       ],
       itemsBottom: [
         {
+          icon: 'mdi-account',
+          title: '運営者情報',
+          to: '/profile',
+        },
+        {
           icon: 'mdi-shield',
           title: 'プライバシーポリシー',
           to: '/policy',
         },
+
         {
           icon: 'mdi-email',
           title: 'お問合わせ',
