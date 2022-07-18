@@ -4,6 +4,7 @@
     <PageTitle :title="title" />
     <v-row>
       <v-col cols="12" class="px-0 px-sm-4 px-md-4 px-lg-4 px-xl-4 py-0">
+        <div class="px-3">ご意見・ご依頼等はこちらからお願いいたします。</div>
         <iframe
           id="em-form"
           title="em-form"
