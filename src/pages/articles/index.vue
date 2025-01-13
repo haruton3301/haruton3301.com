@@ -19,12 +19,10 @@ export default {
   asyncData() {
     return contentfulClient
       .getEntries({
-        // limit: 10,
         content_type: 'article',
         order: '-sys.createdAt',
       })
       .then((entries) => {
-        console.log(entries.items)
         return {
           posts: entries.items,
         }

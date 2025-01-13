@@ -2,7 +2,6 @@ import MarkdownIt from 'markdown-it'
 
 export default ({ app }, inject) => {
   const md = new MarkdownIt({
-    // markdownitのオプション
     html: true,
     linkify: true,
     typography: true,

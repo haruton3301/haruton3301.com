@@ -19,7 +19,6 @@ export default {
   async asyncData({ params }) {
     const [entries, tags] = await Promise.all([
       contentfulClient.getEntries({
-        // 'fields.tags.sys.contentType.sys.id': 'tags', // ←これも必要
         'metadata.tags.sys.id[all]': params.slug,
         content_type: 'article',
         order: '-sys.createdAt',

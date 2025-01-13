@@ -69,21 +69,7 @@ export default {
     },
     content() {
       const contentHtml = this.$md.render(this.post.fields.contentMarkdown)
-
-      // if (process.env.NODE_ENV !== 'production') {
-      //   const parser = new DOMParser()
-      //   const dom = parser.parseFromString(contentHtml, 'text/html')
-      //   const images = dom.querySelectorAll('p img')
-
-      //   images.forEach((image) => {
-      //     const src = image.getAttribute('src')
-      //     const fileName = src.match('.+/(.+?)([?#;].*)?$')[1]
-      //     const from = `src="${src}"`
-      //     const to = `src="/images/${fileName}" data-src="${src}"`
-      //     contentHtml = contentHtml.replaceAll(from, to)
-      //   })
-      // }
-
+      
       return contentHtml
     },
     tags() {
